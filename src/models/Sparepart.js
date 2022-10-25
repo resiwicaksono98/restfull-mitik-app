@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize')
 const db = require('../config/database')
 
-const User = db.define("users", {
+const Sparepart = db.define('spare_parts', {
 	id: {
 		type: DataTypes.UUID,
 		defaultValue: DataTypes.UUIDV4,
@@ -12,21 +12,10 @@ const User = db.define("users", {
 		type: DataTypes.STRING,
 		allowNull: false
 	},
-	email: {
+	price: {
 		type: DataTypes.STRING,
 		allowNull: false
-	},
-	password: {
-		type: DataTypes.STRING,
-		allowNull: false
-	},
-	address: {
-		type: DataTypes.TEXT,
-		allowNull: false
-	},
-	phone_number: { type: DataTypes.STRING }
-}, { freezeTableName: true })
+	}
+}, {freezeTableName: true})
 
-
-
-module.exports = User
+module.exports = Sparepart

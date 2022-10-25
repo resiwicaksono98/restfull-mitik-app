@@ -1,0 +1,83 @@
+@startuml
+
+entity users {
+	* id : Varchar
+	--
+	* name: Varchar
+	* email : Varchar
+	* password : Varchar
+	* address : Text
+	* phone_number : Varchar
+	createdAt : DateTime
+	updatedAt : DateTime
+}
+
+entity admins {
+	* id : Varchar
+	--
+	* name : Varchar
+	* email : Varchar
+	* password : Varchar
+	* phone_number : Varchar
+}
+
+entity engineers {
+	* id : Varchar
+	--
+	* name : Varchar
+	* email : Varchar
+	* password : Varchar
+	* phone_number : Varchar
+}
+
+entity work_orders {
+	* id : Varchar
+	--
+	* adminsId: Varchar
+	start_date : Varchar
+	finished_date : Varchar
+	address: Text
+	detail: Text
+	status: Varchar
+}
+
+entity orders {
+	* id : Varchar
+	--
+	* userId : Varchar
+	engineerId: Varchar
+	workOrderId :  Varchar
+	sparepartId: Varchar
+	order_type: Varchar
+	description: Text
+	status: Varchar
+}
+
+entity spare_parts{
+	* id : Varchar
+	--
+	name: Varchar
+	price: Varchar
+}
+
+entity invoices {
+	* id : Varchar
+	--
+	* userId: Varchar
+	* address: Text
+	* order: Varchar
+	* payment_status: Varchar
+	* price : Varchar
+}
+
+users ||--o{ orders
+	admins ||--|| work_orders
+	orders ||--o{ spare_parts
+	orders ||---|| invoices
+	engineers ||--|| orders
+	work_orders ||--|| orders
+	users ||--o{ invoices
+
+
+
+	@endUml

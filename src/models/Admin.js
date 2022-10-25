@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize')
 const db = require('../config/database')
 
-const User = db.define("users", {
+const Admin = db.define('admins', {
 	id: {
 		type: DataTypes.UUID,
 		defaultValue: DataTypes.UUIDV4,
@@ -20,13 +20,7 @@ const User = db.define("users", {
 		type: DataTypes.STRING,
 		allowNull: false
 	},
-	address: {
-		type: DataTypes.TEXT,
-		allowNull: false
-	},
 	phone_number: { type: DataTypes.STRING }
 }, { freezeTableName: true })
 
-
-
-module.exports = User
+module.exports = Admin
