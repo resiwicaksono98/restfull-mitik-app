@@ -11,7 +11,8 @@ module.exports = (sequelize, DataTypes) => {
 		 */
 		static associate(models) {
 			WorkOrder.belongsTo(models.Admin, { foreignKey: 'adminId', as: 'admin' });
-			WorkOrder.hasOne(models.Order, { foreignKey: 'workOrderId', as: 'order' })
+			WorkOrder.belongsTo(models.Order, { foreignKey: 'orderId', as: 'order' })
+			WorkOrder.belongsTo(models.Engineer, { foreignKey: 'engineerId', as: 'engineer' })
 		}
 	}
 	WorkOrder.init({
@@ -22,9 +23,10 @@ module.exports = (sequelize, DataTypes) => {
 			primaryKey: true
 		},
 		adminId: { type: DataTypes.STRING },
+		orderId: { type: DataTypes.STRING, unique: { args: true, msg: 'Maximum Create work order 1' } },
+		engineerId: { type: DataTypes.STRING },
 		start_date: { type: DataTypes.DATE },
 		finished_date: { type: DataTypes.DATE },
-		address: { type: DataTypes.TEXT },
 		detail: { type: DataTypes.TEXT },
 		status: { type: DataTypes.STRING }
 	}, {

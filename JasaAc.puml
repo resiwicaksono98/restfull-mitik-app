@@ -34,9 +34,10 @@ entity work_orders {
 	* id : Varchar
 	--
 	* adminsId: Varchar
+	* engineerId: Varchar
+	* orderId: Varchar
 	start_date : Varchar
 	finished_date : Varchar
-	address: Text
 	detail: Text
 	status: Varchar
 }
@@ -45,8 +46,6 @@ entity orders {
 	* id : Varchar
 	--
 	* userId : Varchar
-	engineerId: Varchar
-	workOrderId :  Varchar
 	sparepartId: Varchar
 	order_type: Varchar
 	description: Text
@@ -74,7 +73,7 @@ users ||--o{ orders
 	admins ||--|| work_orders
 	orders ||--o{ spare_parts
 	orders ||---|| invoices
-	engineers ||--|| orders
+	engineers ||--o{ work_orders
 	work_orders ||--|| orders
 	users ||--o{ invoices
 

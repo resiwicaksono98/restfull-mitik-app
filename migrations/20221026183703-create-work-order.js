@@ -10,9 +10,10 @@ module.exports = {
 				primaryKey: true
 			},
 			adminId: { type: Sequelize.STRING },
+			engineerId: { type: Sequelize.STRING },
+			orderId: { type: Sequelize.STRING, unique: true },
 			start_date: { type: Sequelize.DATE },
 			finished_date: { type: Sequelize.DATE },
-			address: { type: Sequelize.TEXT },
 			detail: { type: Sequelize.TEXT },
 			status: { type: Sequelize.STRING },
 			createdAt: {

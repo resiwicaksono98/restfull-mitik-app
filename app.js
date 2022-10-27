@@ -7,10 +7,13 @@ const session = require('express-session')
 const db = require('./config/database')
 const sequelizeStore = require('connect-session-sequelize')
 const cors = require('cors')
+const baseConfig = require('./config/baseConfig');
 const { secret_key } = require('./config/baseConfig');
 // Service Route
 const authRoute = require('./app/auth/router');
-const baseConfig = require('./config/baseConfig');
+const orderRoute = require('./app/order/router')
+const work_orders = require('./app/admin/workOrder/router')
+
 const app = express();
 
 
@@ -18,11 +21,12 @@ const app = express();
 // 	await db.sync()
 // })()
 
+// Connect session to mysql
 const sessionStore = sequelizeStore(session.Store)
 const store = new sessionStore({
 	db: db
 })
-
+// Set Session
 app.use(session({
 	name: "kepo",
 	secret: secret_key,
@@ -44,6 +48,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Service
 app.use('/api', authRoute)
+app.use('/api', orderRoute)
+app.use('/api', work_orders)
 
 
 // catch 404 and forward to error handler

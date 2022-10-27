@@ -13,8 +13,6 @@ module.exports = {
 				type: Sequelize.STRING,
 				allowNull: false
 			},
-			engineerId: { type: Sequelize.STRING },
-			workOrderId: { type: Sequelize.STRING },
 			order_type: { type: Sequelize.STRING, allowNull: false },
 			sparepartId: { type: Sequelize.STRING },
 			description: { type: Sequelize.TEXT },

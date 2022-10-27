@@ -11,11 +11,7 @@ module.exports = (sequelize, DataTypes) => {
 		 */
 		static associate(models) {
 			Order.belongsTo(models.User, { foreignKey: { name: 'userId' }, as: 'user' })
-			// Engineer Has Many Orders
-			Order.belongsTo(models.Engineer, { foreignKey: {name: 'engineerId'}, as: 'engineer' })
-		
-			// ends
-			Order.belongsTo(models.WorkOrder, { foreignKey: 'workOrderId', as: 'workOrder' })
+			Order.hasOne(models.WorkOrder, { foreignKey: 'orderId', as: 'workOrder' })
 			Order.belongsTo(models.Sparepart, { foreignKey: 'sparepartId', as: 'sparepart' })
 			Order.hasOne(models.Invoice, { foreignKey: 'order', as: 'invoice' })
 		}
@@ -31,15 +27,13 @@ module.exports = (sequelize, DataTypes) => {
 			type: DataTypes.STRING,
 			allowNull: false
 		},
-		engineerId: { type: DataTypes.STRING },
-		workOrderId: { type: DataTypes.STRING },
 		order_type: { type: DataTypes.STRING, allowNull: false },
 		sparepartId: { type: DataTypes.STRING },
 		description: { type: DataTypes.TEXT },
 		status: {
 			type: DataTypes.STRING,
 			allowNull: false,
-			defaultValue: 'pending'
+			defaultValue: 'pending' //Pending, Approve , in progress , success
 		}
 	}, {
 		sequelize,
