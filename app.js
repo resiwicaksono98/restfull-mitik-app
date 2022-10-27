@@ -12,7 +12,8 @@ const { secret_key } = require('./config/baseConfig');
 // Service Route
 const authRoute = require('./app/auth/router');
 const orderRoute = require('./app/order/router')
-const work_orders = require('./app/admin/workOrder/router')
+const workOrderRoute = require('./app/admin/workOrder/router')
+const sparepartRouter = require('./app/admin/sparepart/router')
 
 const app = express();
 
@@ -49,7 +50,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Service
 app.use('/api', authRoute)
 app.use('/api', orderRoute)
-app.use('/api', work_orders)
+app.use('/api', workOrderRoute)
+app.use('/api', sparepartRouter)
+
 
 
 // catch 404 and forward to error handler
