@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
 		 * The `models/index` file will call this method automatically.
 		 */
 		static associate(models) {
-			Sparepart.hasMany(models.Order, { foreignKey: 'sparepartId', as: 'order' })
+			Sparepart.hasOne(models.Order, { through: 'Order_Sparepart' })
 		}
 	}
 	Sparepart.init({
@@ -22,7 +22,11 @@ module.exports = (sequelize, DataTypes) => {
 		},
 		name: {
 			type: DataTypes.STRING,
-			allowNull: false
+			allowNull: false,
+			unique: {
+				args: true,
+				msg: 'Sparepart already exists'
+			}
 		},
 		price: {
 			type: DataTypes.STRING,

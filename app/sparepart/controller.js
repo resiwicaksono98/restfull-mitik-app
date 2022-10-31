@@ -1,4 +1,4 @@
-const { Sparepart } = require('../../../models')
+const { Sparepart } = require('../../models')
 
 // Create sparepart
 const createSparepart = async (req, res, next) => {

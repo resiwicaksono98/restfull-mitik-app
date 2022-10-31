@@ -1,7 +1,9 @@
 const express = require('express')
-const { verifyAdmin } = require('../../../middleware/auth')
+const { verifyAdmin } = require('../../middleware/auth')
 const { createWorkOrder, getAllWorkOrder, getWorkOrderById, updateWorkOrder, destroyWorkOrder } = require('./controller')
 const router = express.Router()
+
+// Only admin role 
 
 router.post('/admin/work_orders/:id', verifyAdmin, createWorkOrder)
 router.get('/admin/work_orders', verifyAdmin, getAllWorkOrder)

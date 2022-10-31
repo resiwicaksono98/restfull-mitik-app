@@ -62,8 +62,6 @@ entity spare_parts{
 entity invoices {
 	* id : Varchar
 	--
-	* userId: Varchar
-	* address: Text
 	* order: Varchar
 	* payment_status: Varchar
 	* price : Varchar
@@ -71,11 +69,10 @@ entity invoices {
 
 users ||--o{ orders
 	admins ||--|| work_orders
-	orders ||--o{ spare_parts
+	spare_parts ||--o{ orders
 	orders ||---|| invoices
 	engineers ||--o{ work_orders
 	work_orders ||--|| orders
-	users ||--o{ invoices
 
 
 

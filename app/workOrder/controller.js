@@ -1,4 +1,4 @@
-const { WorkOrder, Order, Engineer, User, Admin } = require('../../../models')
+const { WorkOrder, Order, Engineer, User, Admin } = require('../../models')
 
 // Create Work Order
 const createWorkOrder = async (req, res, next) => {

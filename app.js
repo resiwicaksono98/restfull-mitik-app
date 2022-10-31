@@ -12,8 +12,10 @@ const { secret_key } = require('./config/baseConfig');
 // Service Route
 const authRoute = require('./app/auth/router');
 const orderRoute = require('./app/order/router')
-const workOrderRoute = require('./app/admin/workOrder/router')
-const sparepartRouter = require('./app/admin/sparepart/router')
+const workOrderRoute = require('./app/workOrder/router')
+const sparepartRoute = require('./app/sparepart/router')
+const invoiceRoute = require('./app/invoice/router')
+
 
 const app = express();
 
@@ -51,7 +53,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/api', authRoute)
 app.use('/api', orderRoute)
 app.use('/api', workOrderRoute)
-app.use('/api', sparepartRouter)
+app.use('/api', sparepartRoute)
+app.use('/api', invoiceRoute)
 
 
 

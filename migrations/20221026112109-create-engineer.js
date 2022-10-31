@@ -19,10 +19,7 @@ module.exports = {
 				validate: {
 					isEmail: true
 				},
-				unique: {
-					args: true,
-					msg: 'Email already use'
-				}
+				unique: true
 			},
 			password: {
 				type: Sequelize.STRING,
@@ -31,10 +28,7 @@ module.exports = {
 			phone_number: {
 				type: Sequelize.STRING,
 				allowNull: false,
-				unique: {
-					args: true,
-					msg: 'Phone number already use'
-				}
+				unique: true
 			},
 			createdAt: {
 				allowNull: false,

@@ -2,6 +2,7 @@
 const {
 	Model
 } = require('sequelize');
+const { Invoice } = require('./index')
 module.exports = (sequelize, DataTypes) => {
 	class Order extends Model {
 		/**
@@ -13,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
 			Order.belongsTo(models.User, { foreignKey: { name: 'userId' }, as: 'user' })
 			Order.hasOne(models.WorkOrder, { foreignKey: 'orderId', as: 'workOrder' })
 			Order.belongsTo(models.Sparepart, { foreignKey: 'sparepartId', as: 'sparepart' })
-			Order.hasOne(models.Invoice, { foreignKey: 'order', as: 'invoice' })
+			Order.hasOne(models.Invoice, { foreignKey: 'orderId', as: 'invoice' })
 		}
 	}
 	Order.init({

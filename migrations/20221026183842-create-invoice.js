@@ -9,23 +9,20 @@ module.exports = {
 				allowNull: false,
 				primaryKey: true
 			},
-			userId: {
+			orderId: {
 				type: Sequelize.STRING,
 				allowNull: false,
-			},
-			address: {
-				type: Sequelize.TEXT,
-				allowNull: false
-			},
-			order: {
-				type: Sequelize.STRING,
-				allowNull: false
+				unique: true
 			},
 			payment_status: {
 				type: Sequelize.STRING,
 				allowNull: false,
 				defaultValue: 'pending'
 				// Payment Status : Pending / Complete / Cancelled / Failed
+			},
+			totalPrice: {
+				type: Sequelize.STRING,
+				allowNull: false
 			},
 			createdAt: {
 				allowNull: false,
