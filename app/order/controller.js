@@ -20,7 +20,7 @@ const createOrder = async (req, res, next) => {
     };
     // Check order max
     const orderNotApprove = await Order.findAll({
-      where: { userId: req.session.userId, status: { [Op.ne]: "approve" } },
+      where: { userId: req.session.userId, status: { [Op.ne]: "success" } },
     });
 
     if (orderNotApprove.length > 0)
